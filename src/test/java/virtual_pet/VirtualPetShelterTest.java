@@ -12,9 +12,9 @@ public class VirtualPetShelterTest {
     @Test
     public void shouldHaveVariableStoresPets (){
         VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.addPetToShelter("Dingo", "dango dongo");
+        underTest.addPetToShelter(1,"Dingo", "dango dongo");
         int numberOfPets = underTest.getSize();
-        assertEquals(6, numberOfPets);
+        assertEquals(7, numberOfPets);
     }
     @Test
     public void shouldReturnNamesAllPets(){
@@ -36,26 +36,26 @@ public class VirtualPetShelterTest {
     @Test
     public void shouldReturnPetGivenName(){
         VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.addPetToShelter("Dingo", "dango dongo");
-        assertEquals(underTest.getPet(5), underTest.getPetByName("Dingo"));
+        underTest.addPetToShelter(1,"Dingo", "dango dongo");
+        assertEquals(underTest.getPet(6), underTest.getPetByName("Dingo"));
 
     }
     //should allow intake of homeless pet
     @Test
     public void shouldAllowIntakeOfPets (){
         VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.addPetToShelter("Dingo", "dango dongo");
+        underTest.addPetToShelter(1,"Dingo", "dango dongo");
         int numberOfPets = underTest.getSize();
-        assertEquals(6, numberOfPets);
+        assertEquals(7, numberOfPets);
     }
     //should allow adoption of a pet
     @Test
     public void shouldAllowAdoptionOfPet (){
         VirtualPetShelter underTest = new VirtualPetShelter();
-        underTest.addPetToShelter("Dingo", "dango dongo");
+        underTest.addPetToShelter(1,"Dingo", "dango dongo");
         underTest.removePetFromShelter(underTest.getPetByName("Dingo"));
         int numberOfPets = underTest.getSize();
-        assertEquals(5, numberOfPets);
+        assertEquals(6, numberOfPets);
     }
     //should have a method to feed the pets in the shelter
     @Test

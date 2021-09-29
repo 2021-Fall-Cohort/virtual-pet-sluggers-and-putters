@@ -69,22 +69,30 @@ public class VirtualPetShelterApp {
     }
 
     public static void printStatusOfPets(){
-        System.out.println("|Name        |Hunger  |Thirst  |Sadness |");
-        System.out.println("|------------|--------|--------|--------|");
+        System.out.println("|Name        |Hunger  |Thirst  |Sadness |Maintenance|");
+        System.out.println("|------------|--------|--------|--------|-----------|");
         ArrayList<VirtualPet> petList = myShelter.returnsCollectionOfPets();
         for (VirtualPet currentPet : petList) {
-            if (currentPet instanceof Slug) {
-                System.out.println(((Slug)currentPet).getPetString());
+            if (currentPet instanceof OrganicPet) {
+                System.out.println(((OrganicPet)currentPet).getOrganicString());
+            }
+            if (currentPet instanceof RoboticPet) {
+                System.out.println(((RoboticPet)currentPet).getRoboticString());
             }
         }
         System.out.println();
     }
     public static void getNameDescription(){
-        System.out.println("A stray slug has been found and admitted to the shelter.\n\nWhat would you like to name it?");
+        System.out.println("A stray pet has been found near the shelter and admitted for care. What type of pet is it?"+
+        "\nType 1 for Organic Slug\nType 2 for Robotic Slug\nType 3 for Organic Cat\nType 4 for Robotic Cat\n" +
+        "Type 5 for Organic Dog\nType 6 for Robotic Dog\n\n");
+        int petType = inputScanner.nextInt();
+        inputScanner.nextLine();
+        System.out.println("What would you like to name it?");
         String newName = inputScanner.nextLine();
         System.out.println("How would you describe this slug?");
         String newDescription = inputScanner.nextLine();
-        myShelter.addPetToShelter(newName, newDescription);
+        myShelter.addPetToShelter(petType, newName, newDescription);
     }
 
 }

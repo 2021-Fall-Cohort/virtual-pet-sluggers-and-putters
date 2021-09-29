@@ -9,11 +9,13 @@ public class VirtualPetShelter {
     //this method cleanly creates an array list of pets
     public VirtualPetShelter(){
         virtualPets = new ArrayList<>();
-        virtualPets.add(new Slug("Toofth", "a slug who has a portly figure with a long, golden beard."));
-        virtualPets.add(new Slug("Rutherford", "a slug who breathes fire and has a sharp tongue."));
-        virtualPets.add(new Slug("Lil Baby", "a slug who has quite the appetite for something."));
-        virtualPets.add(new Slug("Dave", "a slug who wants to rule the world some day."));
-        virtualPets.add(new Slug("Queen A", "a slug who brushes her teeth twice a day."));
+        virtualPets.add(new OrganicSlug("Toofth", "a slug who has a portly figure with a long, golden beard."));
+        virtualPets.add(new RoboticSlug("Rutherford", "a robotic slug who breathes fire and has a sharp tongue."));
+        virtualPets.add(new OrganicDog("Lil Baby", "a dog who has quite the appetite for something."));
+        virtualPets.add(new OrganicCat("Dave", "a cat who wants to rule the world some day."));
+        virtualPets.add(new RoboticCat("Queen A", "a robotic cat who brushes her teeth twice a day."));
+        virtualPets.add(new RoboticDog("Cinderella", "a robotic dog who has a penchant for rhinestones."));
+
     }
 
     //cleanly retrieves names of all the slugs in the shelter
@@ -42,16 +44,32 @@ public class VirtualPetShelter {
     }
 
     //method that allows intake of a pet to the shelter
-    public void addPetToShelter(String name, String description){
-        virtualPets.add(new Slug(name, description));
+    public void addPetToShelter(int petType,String name, String description){
+        switch (petType) {
+            case 1:
+                virtualPets.add(new OrganicSlug(name, description));
+                break;
+            case 2:
+                virtualPets.add(new RoboticSlug(name, description));
+                break;
+            case 3:
+                virtualPets.add(new OrganicCat(name, description));
+                break;
+            case 4:
+                virtualPets.add(new RoboticCat(name, description));
+                break;
+            case 5:
+                virtualPets.add(new OrganicDog(name, description));
+                break;
+            case 6:
+                virtualPets.add(new RoboticDog(name, description));
+                break;
+        }
     }
 
 
     //method that allows adoption that removes pet
     public void removePetFromShelter(VirtualPet chosenPet){
-        if (chosenPet instanceof Slug) {
-            ((Slug) chosenPet).adopt();
-        }
         for (int i = 0; i < virtualPets.size(); i++){
             if(virtualPets.get(i) == chosenPet){
                 virtualPets.remove(i);
@@ -62,8 +80,11 @@ public class VirtualPetShelter {
     //method to feed all pets
     public void feedsAllThePets(){
         for (VirtualPet currentPet : virtualPets) {
-            if (currentPet instanceof Slug) {
-                ((Slug) currentPet).feed();
+            if (currentPet instanceof OrganicPet) {
+                currentPet.feed();
+            }
+            if (currentPet instanceof RoboticPet) {
+                currentPet.feed();
             }
         }
     }
@@ -71,8 +92,8 @@ public class VirtualPetShelter {
     //method to water all pets
     public void watersAllThePets(){
         for (VirtualPet currentPet : virtualPets) {
-            if (currentPet instanceof Slug) {
-                ((Slug) currentPet).water();
+            if (currentPet instanceof OrganicSlug) {
+                ((OrganicSlug) currentPet).water();
             }
         }
 
@@ -80,8 +101,8 @@ public class VirtualPetShelter {
 
     //method that plays with an individual pet
     public void playsWithOnePet(VirtualPet chosenPet) {
-        if (chosenPet instanceof Slug) {
-            ((Slug) chosenPet).play();
+        if (chosenPet instanceof OrganicSlug) {
+            ((OrganicSlug) chosenPet).play();
         }
 
     }
@@ -89,11 +110,22 @@ public class VirtualPetShelter {
     //tick method that calls a tick method for each of the pets in the shelter
     public void tick(){
         for (VirtualPet currentPet : virtualPets) {
-            if (currentPet instanceof Slug) {
-                ((Slug) currentPet).tickSlug();
+            if (currentPet instanceof OrganicPet) {
+                ((OrganicPet) currentPet).tick();
+            }
+            else if (currentPet instanceof RoboticPet) {
+                ((RoboticPet) currentPet).tick();
             }
         }
     }
+
+//    public void maintenance(){
+//        for (VirtualPet currentPet : virtualPets) {
+//            if (currentPet instanceof OrganicPet) {
+//                ((OrganicPet) ((OrganicPet) currentPet).dirty)
+//            }
+//        }
+//    }
 
     //gets size of arraylist
     public int getSize(){
