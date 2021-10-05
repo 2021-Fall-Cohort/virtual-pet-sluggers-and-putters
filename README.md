@@ -1,21 +1,28 @@
-# Required Tasks
-## VirtualPet class
-- [ ] You will need to create a VirtualPet class.
-- [ ] Create at least three instance variables (aka attributes aka properties aka fields).
-- [ ] Create at least three methods (messages you send to your pet).
-- [ ] Create a tick() method that represents the passage of time.
-## VirtualPetApp class
-- [ ] Create a main method.
-- [ ] implements a game loop.
-- [ ] asks for user input.
-- [ ] writes output to the console.
+# Virtual Pet Shelter
+You've accepted a job at your local pet shelter, "No Bears, Slugs, and More"! 
+You are responsible for taking care of the pets, which definitely does not include any bears, but does include both robotic and organic pets.
 
+## As an employee, you are responsible for seeing to the needs of the pets.
+These needs differ depending on the type of pet.
 
-## Stretch Tasks
-- [ ] Give the pet the ability to take care of some of its own needs.
+### Robotic pets need:
+- [ ] Oil
+- [ ] Gas
+- [ ] Repairs
+- [ ] Play Time
 
-Pets are not robots - they usually have some sort of self-determination! When tick() is called, you might want to have your pet take a look at its needs and address one, prioritizing whichever need is highest. You could also make your pet uncooperative - when the user tries to feed the pet, for example, you might make the pet refuse to eat if it is bored. Remember how we created an instance of the Random class to create a random number generator? You might want to incorporate that.
+### While organic pets need:
+- [ ] Water
+- [ ] Food
+- [ ] Clean quarters
+- [ ] Play time
 
-- [ ] Create a visual representation of your pet.
+### As caretaker, it will be up to you to decide what actions you will take to help your pets meet their needs! Will you:
+- [ ] Oil/water the pets?
+- [ ] Gas/feed the pets?
+- [ ] Repair/clean?
+- [ ] Play with them?
+- [ ] Take them on a walk?
 
-Rather than using numbers to convey your pet’s status, you could have some sort of visual representation of the pet. I.e., instead of printing hunger: 50, you could use smileys or ASCII art to show hunger when hunger >= 50.
+### Pets are also able to be adopted from the shelter and new pets taken in.
+;) Just remember that your pay is based off of the number of pets you are currently taking care of.
