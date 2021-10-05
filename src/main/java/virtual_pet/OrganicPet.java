@@ -1,7 +1,8 @@
 package virtual_pet;
 
 public abstract class OrganicPet extends VirtualPet{
-
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String RESET = "\033[0m";
     protected int hunger;
     protected int thirst;
     protected int dirty;
@@ -63,7 +64,7 @@ public abstract class OrganicPet extends VirtualPet{
         for (int i = 0; i <= dirty; i += 7){
             dirtyCount += "|";
         }
-        return String.format("|%-12s|%-15s|%-15s|%-15s|%-15s|", getName(), hungerCount, thirstCount, sadnessCount, dirtyCount);
+        return String.format(ANSI_BLUE+" %-12s%-15s %-15s %-15s %-15s ",getName(),hungerCount,thirstCount,sadnessCount,dirtyCount+RESET);
     }
 
     public void tick(){
@@ -83,6 +84,13 @@ public abstract class OrganicPet extends VirtualPet{
         else{
             hunger = Math.max(0, hunger-10);
         }
+    }
+
+    public boolean isAlive(){
+        if (hunger == 100 || thirst == 100 || dirty == 100 || sadness == 100){
+            return false;
+        }
+        return true;
     }
 
 }

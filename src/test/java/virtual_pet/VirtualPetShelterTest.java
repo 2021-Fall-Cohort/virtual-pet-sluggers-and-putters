@@ -81,4 +81,144 @@ public class VirtualPetShelterTest {
         underTest.playsWithOnePet(underTest.getPet(0));
         assertEquals(0, underTest.getPet(0).getSadness());
     }
+    //should check if pets are alive
+    @Test
+    public void shouldCheckIfPetsAreAlive(){
+        VirtualPetShelter underTest = new VirtualPetShelter();
+        assertEquals(true, underTest.aliveCheck());
+    }
+    //should get size of array list
+    @Test
+    public void shouldGetSizeOfArrayList(){
+        VirtualPetShelter underTest = new VirtualPetShelter();
+        assertEquals(6, underTest.getSize());
+    }
+    //should empty the array list of all pets
+    @Test
+    public void shouldClearTheArrayList(){
+        VirtualPetShelter underTest = new VirtualPetShelter();
+        underTest.empty();
+        underTest.addPetToShelter(1,"Dag","davis");
+        assertEquals(1, underTest.getSize());
+    }
+    //should check tick makes pets die
+    @Test
+    public void shouldCheckIfTickKillsPets(){
+        VirtualPetShelter underTest = new VirtualPetShelter();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        assertEquals(false, underTest.aliveCheck());
+    }
+    //should report that pet has died
+    @Test
+    public void shouldReportPetDead() {
+        VirtualPetShelter underTest = new VirtualPetShelter();
+        underTest.empty();
+        underTest.addPetToShelter(1, "dag", "davis");
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        underTest.tick();
+        assertEquals("dag, \b\b fainted.", underTest.report());
+    }
 }

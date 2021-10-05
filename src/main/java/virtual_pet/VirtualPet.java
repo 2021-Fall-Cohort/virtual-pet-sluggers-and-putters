@@ -43,4 +43,6 @@ public abstract class VirtualPet {
     public abstract int getMaintenance(); //show dirty or mech
 
     public abstract void tick();
+
+    public abstract boolean isAlive();
 }

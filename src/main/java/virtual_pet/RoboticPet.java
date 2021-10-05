@@ -2,6 +2,8 @@ package virtual_pet;
 
 public abstract class RoboticPet extends VirtualPet{
 
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String RESET = "\033[0m";
     protected int oil;
     protected int gas;
     protected int broken;
@@ -83,7 +85,14 @@ public abstract class RoboticPet extends VirtualPet{
         for (int i = 0; i <= broken; i += 7){
             brokenCount += "|";
         }
-        return String.format("|%-12s|%-15s|%-15s|%-15s|%-15s|", getName() ,gasCount, oilCount, sadnessCount, brokenCount);
+        return String.format(ANSI_GREEN + " %-12s%-15s %-15s %-15s %-15s ", getName() ,gasCount, oilCount, sadnessCount, brokenCount + RESET);
+    }
+
+    public boolean isAlive(){
+        if (oil == 100 || gas == 100 || broken == 100 || sadness == 100){
+            return false;
+        }
+        return true;
     }
 }
 

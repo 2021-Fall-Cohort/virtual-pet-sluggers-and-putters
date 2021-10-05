@@ -48,21 +48,27 @@ public class VirtualPetShelter {
         switch (petType) {
             case 1:
                 virtualPets.add(new OrganicSlug(name, description));
+                slugPic();
                 break;
             case 2:
                 virtualPets.add(new RoboticSlug(name, description));
+                slugPic();
                 break;
             case 3:
                 virtualPets.add(new OrganicCat(name, description));
+                catPic();
                 break;
             case 4:
                 virtualPets.add(new RoboticCat(name, description));
+                catPic();
                 break;
             case 5:
                 virtualPets.add(new OrganicDog(name, description));
+                dogPic();
                 break;
             case 6:
                 virtualPets.add(new RoboticDog(name, description));
+                dogPic();
                 break;
         }
     }
@@ -72,6 +78,24 @@ public class VirtualPetShelter {
     public void removePetFromShelter(VirtualPet chosenPet){
         for (int i = 0; i < virtualPets.size(); i++){
             if(virtualPets.get(i) == chosenPet){
+                if (chosenPet instanceof RoboticDog){
+                    dogPic();
+                }
+                else if (chosenPet instanceof RoboticCat){
+                    catPic();
+                }
+                else if (chosenPet instanceof RoboticSlug){
+                    slugPic();
+                }
+                else if (chosenPet instanceof OrganicDog){
+                    dogPic();
+                }
+                else if (chosenPet instanceof OrganicCat){
+                    catPic();
+                }
+                else if (chosenPet instanceof OrganicSlug){
+                    slugPic();
+                }
                 virtualPets.remove(i);
             }
         }
@@ -108,6 +132,7 @@ public class VirtualPetShelter {
                 ((OrganicDog) currentPet).walk();
             }
         }
+        dogWalk();
     }
 
     //method that plays with an individual pet
@@ -121,15 +146,125 @@ public class VirtualPetShelter {
             currentPet.tick();
         }
     }
+    //checks if pets are alive
+    public boolean aliveCheck(){
+        for (VirtualPet currentPet : virtualPets) {
+            if (!currentPet.isAlive()) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     //gets size of arraylist
     public int getSize(){
         return virtualPets.size();
     }
 
-    //gets pets
+    //get pets
     public VirtualPet getPet(int num){
         return virtualPets.get(num);
     }
+    //clears pets out of the shelter
+    public void empty() {
+        virtualPets.clear();
+    }
 
+    public String report() {
+        String listOfDeadPets = "";
+        System.out.println();
+        for (VirtualPet currentPet : virtualPets) {
+            if (!currentPet.isAlive()) {
+                listOfDeadPets += currentPet.getName() + ", ";
+            }
+        }
+        listOfDeadPets += "\b\b fainted.";
+        return listOfDeadPets;
+    }
+
+    public void slugPic(){
+        System.out.println("              (Yay!!)\n" +
+                "     ^     ^  /\n" +
+                "    /|____/| /\n" +
+                "   (    3   )\n" +
+                "    ( Y  y )\n" +
+                "     \\    /\n" +
+                "      \\  / \n" +
+                "       ()\n");
+    }
+
+    public void dogPic(){
+        System.out.println("     |\\_/|                  \n" +
+                "     | @ @   Woof! \n" +
+                "     |   <>              _  \n" +
+                "     |  _/\\------____ ((| |))\n" +
+                "     |               `--' |   \n" +
+                " ____|_       ___|   |___.' \n" +
+                "/_/_____/____/_______|");
+    }
+
+    public void catPic(){
+        System.out.println("    |\\__/,|   (`\\Yay!\n" +
+                "  _.|o o  |_   ) )\n" +
+                "-(((---(((--------");
+    }
+
+    public void dogWalk(){
+        System.out.println("          __\n" +
+                " \\ ______/ V`-,\n" +
+                "  }        /~~\n" +
+                " /_)^ --,r'\n" +
+                "|b      |b");
+    }
+
+    public void shelterPic(){
+        System.out.println("                           (   )\n" +
+                "                          (    )\n" +
+                "                           (    )\n" +
+                "                          (    )\n" +
+                "                            )  )\n" +
+                "                           (  (                  /\\\n" +
+                "                            (_)                 /  \\  /\\\n" +
+                "                    ________[_]________      /\\/    \\/  \\\n" +
+                "           /\\      /\\        ______    \\    /   /\\/\\  /\\/\\\n" +
+                "          /  \\    //_\\       \\    /\\    \\  /\\/\\/    \\/    \\\n" +
+                "   /\\    / /\\/\\  //___\\       \\__/  \\    \\/\n" +
+                "  /  \\  /\\/    \\//_____\\       \\ |[]|     \\\n" +
+                " /\\/\\/\\/       //_______\\       \\|__|      \\\n" +
+                "/      \\      /XXXXXXXXXX\\                  \\\n" +
+                "        \\    /_I_II  I__I_\\__________________\\\n" +
+                "               I_I|  I__I_____[]_|_[]_____I\n" +
+                "               I_II  I__I_____[]_|_[]_____I\n" +
+                "               I II__I  I     XXXXXXX     I\n" +
+                "            ~~~~~\"   \"~~~~~~~~~~~~~~~~~~~~~~~~");
+    }
+
+    public void bearPic(){
+        System.out.println(" __         __\n" +
+                "/  \\.-\"\"\"-./  \\\n" +
+                "\\    -   -    /\n" +
+                " |   o   o   |  Shoo Bear!\n" +
+                " \\  .-'''-.  /\n" +
+                "  '-\\__Y__/-'\n" +
+                "     `---`");
+    }
+
+    public void bearPic2(){
+        System.out.println("  _,-\"\"`\"\"-~`)\n" +
+                "(`~_,=========\\\n" +
+                " |---,___.-.__,\\\n" +
+                " |        o     \\ ___  _,,,,_     _.--.\n" +
+                "  \\      `^`    /`_.-\"~      `~-;`     \\\n" +
+                "   \\_      _  .'                 `,     |\n" +
+                "     |`-                           \\'__/ \n" +
+                "    /                      ,_       \\  `'-. \n" +
+                "   /    .-\"\"~~--.            `\"-,   ;_    /\n" +
+                "  |              \\               \\  | `\"\"`\n" +
+                "   \\__.--'`\"-.   /_               |'\n" +
+                "              `\"`  `~~~---..,     |\n" +
+                " What are you doing here!    \\ _.-'`-.\n" +
+                "        Shoo!                 \\       \\\n" +
+                "                               '.     /\n" +
+                "                                 `\"~\"`");
+    }
 }
