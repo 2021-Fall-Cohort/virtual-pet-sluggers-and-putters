@@ -72,18 +72,18 @@ public abstract class RoboticPet extends VirtualPet{
         String sadnessCount = "";
         String brokenCount = "";
         for (int i = 0; i <= gas; i += 7){
-            gasCount += "▒";
+            gasCount += "|";
         }
         for (int i = 0; i <= oil; i += 7){
-            oilCount += "▒";
+            oilCount += "|";
         }
         for (int i = 0; i <= sadness; i += 7){
-            sadnessCount += "▒";
+            sadnessCount += "|";
         }
         for (int i = 0; i <= broken; i += 7){
-            brokenCount += "▒";
+            brokenCount += "|";
         }
-        return String.format("|%-12s|%c-15s|%c-15s|%c-15s|%c-15s|", getName() , gasCount, oilCount, sadnessCount, brokenCount);
+        return String.format("|%-12s|%-15s|%-15s|%-15s|%-15s|", getName() ,gasCount, oilCount, sadnessCount, brokenCount);
     }
 }
 
