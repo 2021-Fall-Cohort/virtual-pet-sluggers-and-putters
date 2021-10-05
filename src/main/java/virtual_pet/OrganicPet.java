@@ -47,14 +47,42 @@ public abstract class OrganicPet extends VirtualPet{
     }
 
     public String getOrganicString(){
-        return String.format("|%-12s|%8d|%8d|%8d|%11d|", getName(), hunger, thirst, sadness, dirty);
+        String hungerCount = "";
+        String thirstCount = "";
+        String sadnessCount = "";
+        String dirtyCount = "";
+        for (int i = 0; i <= hunger; i += 7){
+            hungerCount += "|";
+        }
+        for (int i = 0; i <= thirst; i += 7){
+            thirstCount += "|";
+        }
+        for (int i = 0; i <= sadness; i += 7){
+            sadnessCount += "|";
+        }
+        for (int i = 0; i <= dirty; i += 7){
+            dirtyCount += "|";
+        }
+        return String.format("|%-12s|%-15s|%-15s|%-15s|%-15s|", getName(), hungerCount, thirstCount, sadnessCount, dirtyCount);
     }
 
     public void tick(){
-        sadness = Math.min(100, sadness + 10);
-        thirst = Math.min(100, thirst + 10);
-        hunger = Math.min(100, hunger + 10);
-        dirty = Math.min(100, dirty + 10);
+        sadness = Math.min(100, (int) (sadness + Math.floor(Math.random() * 10)));
+        thirst = Math.min(100, (int) (thirst + Math.floor(Math.random() * 10)));
+        hunger = Math.min(100, (int) (hunger + Math.floor(Math.random() * 10)));
+        dirty = Math.min(100, (int) (dirty + Math.floor(Math.random() * 10)));
+        if (sadness >= thirst && sadness >= hunger && sadness >= dirty){
+            sadness = Math.max(0, sadness-10);
+        }
+        else if (thirst >= sadness && thirst >= hunger && thirst >= dirty){
+            thirst = Math.max(0, thirst-10);
+        }
+        else if (dirty >= sadness && dirty >= thirst && dirty >= hunger){
+            dirty = Math.max(0, dirty-10);
+        }
+        else{
+            hunger = Math.max(0, hunger-10);
+        }
     }
 
 }

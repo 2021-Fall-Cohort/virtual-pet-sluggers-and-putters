@@ -80,58 +80,54 @@ public class VirtualPetShelter {
     //method to feed all pets
     public void feedsAllThePets(){
         for (VirtualPet currentPet : virtualPets) {
-            if (currentPet instanceof OrganicPet) {
-                currentPet.feed();
-            }
-            if (currentPet instanceof RoboticPet) {
-                currentPet.feed();
-            }
+            currentPet.feed();
         }
     }
 
     //method to water all pets
     public void watersAllThePets(){
         for (VirtualPet currentPet : virtualPets) {
-            if (currentPet instanceof OrganicSlug) {
-                ((OrganicSlug) currentPet).water();
+            currentPet.water();
+        }
+    }
+
+    //method to maintain all the pets
+    public void maintainAllThePets(){
+        for (VirtualPet currentPet : virtualPets) {
+            currentPet.maintain();
+        }
+    }
+
+    //method to walk all the dogs
+    public void walkAllTheDogs(){
+        for (VirtualPet currentPet : virtualPets) {
+            if (currentPet instanceof RoboticDog) {
+                ((RoboticDog) currentPet).walk();
+            }
+            else if (currentPet instanceof OrganicDog) {
+                ((OrganicDog) currentPet).walk();
             }
         }
-
     }
 
     //method that plays with an individual pet
     public void playsWithOnePet(VirtualPet chosenPet) {
-        if (chosenPet instanceof OrganicSlug) {
-            ((OrganicSlug) chosenPet).play();
-        }
-
+        chosenPet.play();
     }
 
     //tick method that calls a tick method for each of the pets in the shelter
-    public void tick(){
+    public void tick() {
         for (VirtualPet currentPet : virtualPets) {
-            if (currentPet instanceof OrganicPet) {
-                ((OrganicPet) currentPet).tick();
-            }
-            else if (currentPet instanceof RoboticPet) {
-                ((RoboticPet) currentPet).tick();
-            }
+            currentPet.tick();
         }
     }
-
-//    public void maintenance(){
-//        for (VirtualPet currentPet : virtualPets) {
-//            if (currentPet instanceof OrganicPet) {
-//                ((OrganicPet) ((OrganicPet) currentPet).dirty)
-//            }
-//        }
-//    }
 
     //gets size of arraylist
     public int getSize(){
         return virtualPets.size();
     }
 
+    //gets pets
     public VirtualPet getPet(int num){
         return virtualPets.get(num);
     }
